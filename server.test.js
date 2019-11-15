@@ -4,24 +4,30 @@ const db = require('./data/dbConfig');
 const server = require('./server');
 
 beforeEach(async () => {
-    await db('puppies').truncate();
+    await db('puppies')
+    .truncate();
 });
 
 describe('server', () => {
     describe('GET /', () => {
-        it('needs to return 200', async () => {
-            const res = await request(server).get('/');
+        it('needs to return 200 OK', async () => {
+            const res = await request(server)
+            .get('/');
             return expect(res.status).toBe(200);
         });
 
     it('needs to return JSON formatted response', async () => {
-        const res = await request(server).get('/');
-        return expect(res.type).toMatch(/json/i);
+        const res = await request(server)
+        .get('/');
+        return expect(res.type)
+        .toMatch(/json/i);
     });
 
     it('needs to return an array of puppies with length of 0', async () => {
-        const res = await request(server).get('/');
-        return expect(res.body).toHaveLength(0);
+        const res = await request(server)
+        .get('/');
+        return expect(res.body)
+        .toHaveLength(0);
     });
 });
 

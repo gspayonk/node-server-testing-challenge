@@ -9,7 +9,7 @@ server.get('/', async (req, res) => {
     try {
         const puppies = await db.get();
 
-        res.status(200).json(characters);
+        res.status(200).json(puppies);
     } catch {
         res.status(500).json({ error: 'No puppies found!' });
     }
